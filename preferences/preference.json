@@ -35,10 +35,10 @@
       "type": "section"
     },
     "python.rev.PythonPath": {
-      "text": "Pyton Installation Path",
-      "description": "Installation path of python",
+      "text": "Python Installation Path",
+      "description": "Installation path (or command name) of python. On Windows use 'python' or full path like 'C:\\Python312\\python.exe'.",
       "type": "string",
-      "default": "/usr/bin/python"
+      "default": "python"
     },
     "python.rev.skipSelfParam": {
       "text": "Skip self parameter",

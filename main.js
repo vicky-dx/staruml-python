@@ -39,9 +39,9 @@ function getRevOptions() {
     skipSelfParam: app.preferences.get("python.rev.skipSelfParam"),
     skipMagicMethods: app.preferences.get("python.rev.skipMagicMethods"),
     pythonPath: app.preferences.get("python.rev.PythonPath"),
-    typeHierarchy: app.preferences.get("java.rev.typeHierarchy"),
-    packageOverview: app.preferences.get("java.rev.packageOverview"),
-    packageStructure: app.preferences.get("java.rev.packageStructure"),
+    typeHierarchy: app.preferences.get("python.rev.typeHierarchy"),
+    packageOverview: app.preferences.get("python.rev.packageOverview"),
+    packageStructure: app.preferences.get("python.rev.packageStructure"),
   };
 }
 
