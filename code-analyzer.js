@@ -98,6 +98,19 @@ class PythonCodeAnalyzer {
         }
       });
     }
+
+    // Auto-layout and fit all generated diagrams so they are visible
+    setTimeout(() => {
+      baseModel.traverse((elem) => {
+        if (elem.constructor && elem.constructor.name &&
+            (elem.constructor.name === "UMLClassDiagram" ||
+             elem.constructor.name === "UMLPackageDiagram")) {
+          app.diagrams.setCurrentDiagram(elem);
+          app.commands.execute("format:layout-auto");
+          app.commands.execute("view:fit-to-window");
+        }
+      });
+    }, 500);
   }
 
   /**
