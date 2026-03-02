@@ -292,26 +292,23 @@ class PyModule extends PyObject {
 exports.PyModule = PyModule;
 
 class PyPackage {
-  constructor(path, options) {
-    this.name = this._getName(path);
+  constructor(dirPath, options) {
+    this.name = this._getName(dirPath);
     this.modules = [];
     this.packages = [];
     this._options = options;
 
-    var files = fs.readdirSync(path);
+    var files = fs.readdirSync(dirPath);
     if (files && files.length > 0) {
       files.forEach((entry) => {
-        var fullPath = path + "/" + entry;
+        var fullPath = path.join(dirPath, entry);
         this._translatePackagesAndModules(fullPath);
       });
     }
   }
 
-  _getName(path) {
-    var packagePath = path.split("/");
-    var name = packagePath[packagePath.length - 1];
-
-    return name;
+  _getName(dirPath) {
+    return path.basename(dirPath);
   }
 
   _translatePackagesAndModules(pth) {
@@ -367,9 +364,9 @@ function isPythonNamespace(folderPath) {
 
   if (files && files.length > 0) {
     files.every((file) => {
-      folderPath = path.join(folderPath, file);
+      var filePath = path.join(folderPath, file);
 
-      if (path.extname(folderPath).toLowerCase() === ".py") {
+      if (path.extname(filePath).toLowerCase() === ".py") {
         containModules = true;
         return false;
       }
